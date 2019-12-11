@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from '../Login'
 import VideosList from '../Videos'
 import MainPage from '../MainPage'
 import SharePage from '../shareURL'

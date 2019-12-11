@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useMutation, useApolloClient } from '@apollo/react-hooks';
+import React from 'react';
+import { useMutation } from '@apollo/react-hooks';
 import { Form, Input, Button, Row} from 'antd';
 import LoginBox from '../../Auth/components/LoginBox'
 import { ADD_MOVIE } from '../store/gql'
@@ -11,7 +11,7 @@ const ShareBox = (props) => {
 
     const validateURL = (rule, value, callback) =>{
  
-        if( value && !(value.includes("www.youtube.com/watch?v="))){
+        if( value && !(value.includes("youtube.com/watch?v="))){
             callback("Please enter a valid URL! example: [ https://www.youtube.com/watch?v=XXXXX]");
         } else {
             callback();
@@ -48,6 +48,8 @@ const ShareBox = (props) => {
     return(
         <div >
         <LoginBox />
+        {
+          localStorage.getItem('token') ? 
         <Row type="flex" justify="space-around" align="middle" 
          style={
             {
@@ -101,6 +103,9 @@ const ShareBox = (props) => {
 
         </div>
         </Row>
+          :
+          <div></div>
+         }
         </div>
     )
 

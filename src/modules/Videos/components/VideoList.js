@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { List, Spin, Typography, Row, Col, Icon, Button, Alert} from 'antd';
+import { List, Spin, Typography, Row, Col, Icon, Button} from 'antd';
 import InfiniteScroll from 'react-infinite-scroller';
 
 
@@ -39,7 +39,7 @@ const VideosList = (props) => {
   }
 
   const onActionDOWN = async( movieID) => {  
-    console.log(movieID)
+    //console.log(movieID)
         try { 
           const variables ={
             name: localStorage.getItem('username'),
@@ -96,7 +96,6 @@ const VideosList = (props) => {
     }
  
   }
-  //console.log(rendervideos)
   return (
    
     <div >
@@ -129,14 +128,6 @@ const VideosList = (props) => {
                       maxWidth: "500px",
                   }}
                >
-                {/* <YouTube 
-                    videoId={item.movieID}
-                    opts={{}}
-                    onReady={ function onPlayerReady(event) {
-                    setReady(true)    
-                      
-                    }}
-                  /> */}
                 <div
                     className="video"
                     style={{
@@ -306,42 +297,3 @@ const VideosList = (props) => {
 
 
 export default VideosList
-//player
-      //   <YouTube
-      //    videoId={video.movieID}
-      //    opts={{}}
-      //    //onReady={'onPlayerReady'}
-      //  />
-    //<YouTubee video={video} autoplay="0" rel="0" modest="1" />
-      // <div key= {video}>
-      //   <ReactPlayer url= {`https://www.youtube.com/embed/${video.movieID}`} playing />
-      // </div>
-      // <div key= {video}
-      // className="video"
-      // style={{
-      // position: "relative",
-      // paddingBottom: "56.25%" /* 16:9 */,
-      // paddingTop: 25,
-      // height: 0
-      // }}
-      // >
-//       <iframe src= {`https://www.youtube.com/embed/${video.movieID}`}
-//       frameBorder='0'
-//       allow='autoplay; encrypted-media'
-//       allowFullScreen
-//       title='video'
-//       allow='autoplay; encrypted-media' allowFullScreen title='video'
-// />
-
-      //  <iframe
-      //   style={{
-      //     position: "absolute",
-      //     top: 0,
-      //     left: 0,
-      //     width: "100%",
-      //     height: "100%"
-      //   }}
-      //   src={`https://www.youtube.com/embed/${video}`}
-      //   frameBorder="0"
-      //  />
-      // </div>

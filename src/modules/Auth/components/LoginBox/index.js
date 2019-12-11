@@ -15,8 +15,15 @@ const LoginBox = (props) => {
   const onLogin = e => {
     e.preventDefault();
     setSubmitting(true)
+
+    
     
     props.form.validateFields(async (err, values) => {
+      if(err){
+        console.log(err)
+        setError("please enter your username and password")
+        setSubmitting(false)
+      }
       if (!err && values) {
         console.log('Received values of form: ', values);
         try { 
@@ -29,6 +36,7 @@ const LoginBox = (props) => {
           setLogin(values.username)
           await window.location.reload(false);
         } catch (e) {
+          console.log(e)
           //console.log(e.message.split(':')[1])
           //console.log('hereeeeee')
           setError(e.message.split(':')[1]+" please check username or password")
