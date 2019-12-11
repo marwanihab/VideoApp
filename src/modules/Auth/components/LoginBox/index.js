@@ -17,7 +17,7 @@ const LoginBox = (props) => {
     setSubmitting(true)
     
     props.form.validateFields(async (err, values) => {
-      if (!err) {
+      if (!err && values) {
         console.log('Received values of form: ', values);
         try { 
           const response = await login({ variables: {...values} })
@@ -29,8 +29,8 @@ const LoginBox = (props) => {
           setLogin(values.username)
           await window.location.reload(false);
         } catch (e) {
-          console.log(e.message.split(':')[1])
-          console.log('hereeeeee')
+          //console.log(e.message.split(':')[1])
+          //console.log('hereeeeee')
           setError(e.message.split(':')[1]+" please check username or password")
         }
         setSubmitting(false)
