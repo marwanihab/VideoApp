@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { render } from 'react-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { ApolloProvider } from '@apollo/react-hooks';
+import Router from './pages/Router'
 
-export default App;
+import ApolloClient, { InMemoryCache } from 'apollo-boost';
+
+export const client = new ApolloClient(
+  {
+    cache: new InMemoryCache(),
+    uri: 'http://localhost:4000/',
+    request: (operation) => {
+      const token = localStorage.getItem('token')
+      operation.setContext({
+        headers: {
+          authorization: token ? `Bearer ${token}` : ''
+        }
+      })
+    },
+    // resolvers,
+  }
+);
+
+export const App = () => (
+  <ApolloProvider client={client}>
+    <Router />
+  </ApolloProvider>
+);
+
+render(<App />, document.getElementById('root'));
