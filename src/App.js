@@ -9,7 +9,7 @@ import ApolloClient, { InMemoryCache } from 'apollo-boost';
 export const client = new ApolloClient(
   {
     cache: new InMemoryCache(),
-    uri: 'http://localhost:4000/',
+    uri: 'https://mighty-scrubland-05134.herokuapp.com/',
     request: (operation) => {
       const token = localStorage.getItem('token')
       operation.setContext({
